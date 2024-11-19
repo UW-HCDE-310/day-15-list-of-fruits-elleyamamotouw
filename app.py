@@ -1,6 +1,7 @@
 from operator import truediv
 
 from flask import Flask, render_template
+import keys
 
 app = Flask(__name__)
 @app.route("/")
@@ -13,7 +14,7 @@ def index():
     fruits_o_start = [fruit for fruit in fruits if check_o_start(fruit)]
     fruits_more_than_3 = [fruit for fruit in fruits if check_more_than_3(fruit)]
 
-    return render_template("index.html", fruits_o_start=fruits_o_start)
+    return render_template("index.html", fruits_o_start=fruits_o_start, key_1=keys.MY_SECRET_API_KEY)
 
 def check_o_start(fruit_info):
     return fruit_info["name"][0].lower() == "o"
